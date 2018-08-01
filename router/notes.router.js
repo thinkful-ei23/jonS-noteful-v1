@@ -2,9 +2,10 @@
 
 const express = require('express');
 const router = express.Router();
+const data = require('../db/notes');
 
 // Load array of notes
-const data = require('./db/notes');
+
 
 router.get('/api/notes', (req, res) => {
   const searchTerm = req.query.searchTerm;
