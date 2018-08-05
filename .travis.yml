@@ -4,6 +4,6 @@ deploy:
   provider: heroku
   api_key:
     secure: SeaorU0DaiQLeAT/G7R9/MXkxyShsFaXzkBA3RzhUjOwEfo2Vq/cX7b+BD1mvDeXuUO2p7yZ+KwUQ5poUULYFTX/hLBtWdazrQ2kWKNyZj9uPPoW1U06djGMX+eKP3CDSWysddFDPP/FC/MBsCBft18l9gLU/DtiYnFIVP2TC5xLHfXaGh9r8JBchF+MSwGgoHC8fZfFkDMc2JRUheuaHZGBBgKT5PaOdQXOADLdkdQNXyZ7XYIRQs/U9rgfT3OizxYmZWDyxOMUm5jU4EVxL84KK6R/bq7YxHRe4VXR0Q952pGs9eouMtFziQ+5dAun6WdPYGbR4AMYXOfAuJrXmrpp2DK+zuPWvEoWZHJk8WZURzxXLkEQ08i4PbqfImvpqrU8etdc6idDQ1uJl7SaQOgJOYz4jnVf6HxdBCnzYQDXZDDG3FvxQcP2bFw2LPHOBcNFutZm0cuUxAwzH4qJt/eKDM3P0Rf2XozcXBBKdNCHO1t4ILXaIwIsnxg2trk0lItAsJRkPvl8fK/9Hfaxalr9PE1ZSL38y/KBRTGW3kBPZejWTjhBYzB/O5vgrKo2tvhRgAyEUJfj1UJmaWpy+dFvggl73H537EdTUn3s7CMT3q4AV0pAU4cxwhBb0yBkPGCBcmn2ibGBSl1/KOQt8LM5JJCshnIQO2lBA6Ld2EA=
-  app: jonS-noteful-v1
+  app: jons-noteful-v1
   on:
     repo: thinkful-ei23/jonS-noteful-v1
