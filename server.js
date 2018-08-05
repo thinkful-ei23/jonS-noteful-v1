@@ -1,35 +1,65 @@
 'use strict';
 
+console.log('Hello Noteful!');
+
+// INSERT EXPRESS APP CODE HERE...
 const express = require('express');
-const morgan = require('morgan');
 
-const {PORT} = require('./config');
-const notesRouter = require('./router/notes.router');
 
-// Create an Express application
 const app = express();
+
+const morgan = require('morgan');
+const { PORT } = require('./config');
+const notesRouter = require('./router/notes.router');
 
 // Log all requests
 app.use(morgan('dev'));
 
-// Create a static webserver
+// ADD STATIC SERVER HERE
 app.use(express.static('public'));
 
-// Parse request body
+// Parse Request Body
 app.use(express.json());
 
-// Mount router on "/api"
 app.use('/api', notesRouter);
 
-// Catch-all 404
+let server;
+
+function runServer() {
+  const port = PORT;
+  return new Promise((resolve, reject) => {
+    server = app
+      .listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve(server);
+      })
+      .on('error', err => {
+        reject(err);
+      });
+  });
+}
+
+function closeServer() {
+  return new Promise((resolve, reject) => {
+    console.log('Closing server');
+    server.close(err => {
+      if (err) {
+        reject(err);
+        // so we don't also call `resolve()`
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+
 app.use(function (req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.status(404).json({ message: 'Not Found' });
 });
 
-// Catch-all Error handler
-// NOTE: we'll prevent stacktrace leak in later exercise
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.json({
@@ -38,13 +68,9 @@ app.use(function (err, req, res, next) {
   });
 });
 
-// Listen for incoming connections
+// Listening for incoming connections
 if (require.main === module) {
-  app.listen(PORT, function () {
-    console.info(`Server listening on ${this.address().port}`);
-  }).on('error', err => {
-    console.error(err);
-  });
+  runServer().catch(err => console.error(err));
 }
 
-module.exports = app; 
+module.exports = { app, runServer, closeServer }; // Export for testing

@@ -8,7 +8,7 @@ const api = {
       type: 'GET',
       url: '/api/notes/',
       dataType: 'json',
-      data: query
+      data: query,
     });
   },
 
@@ -16,7 +16,7 @@ const api = {
     return $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: `/api/notes/${id}`
+      url: `/api/notes/${id}`,
     });
   },
 
@@ -26,7 +26,7 @@ const api = {
       url: `/api/notes/${id}`,
       contentType: 'application/json',
       dataType: 'json',
-      data: JSON.stringify(obj)
+      data: JSON.stringify(obj),
     });
   },
 
@@ -37,7 +37,7 @@ const api = {
       contentType: 'application/json',
       dataType: 'json',
       processData: false,
-      data: JSON.stringify(obj)
+      data: JSON.stringify(obj),
     });
   },
 
@@ -45,7 +45,7 @@ const api = {
     return $.ajax({
       type: 'DELETE',
       url: `/api/notes/${id}`,
-      dataType: 'json'
+      dataType: 'json',
     });
   }
 
